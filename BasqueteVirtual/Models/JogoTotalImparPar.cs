@@ -5,12 +5,11 @@ using System.Collections.Generic;
 
 namespace BasqueteVirtual.Models
 {
-    public partial class MargemDeVitoria5OpcoesEtotalDePonto
+    public partial class JogoTotalImparPar
     {
         public int Id { get; set; }
         public string Horario { get; set; }
-        public string NomeTime { get; set; }
-        public string Valor { get; set; }
-        public string Odd { get; set; }
+        public string Impar { get; set; }
+        public string Par { get; set; }
     }
 }

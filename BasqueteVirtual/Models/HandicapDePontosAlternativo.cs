@@ -7,7 +7,7 @@ namespace BasqueteVirtual.Models
 {
     public partial class HandicapDePontosAlternativo
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string Horario { get; set; }
         public string Nome { get; set; }
         public string Total { get; set; }

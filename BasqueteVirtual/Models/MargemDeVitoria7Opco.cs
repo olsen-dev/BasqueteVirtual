@@ -7,7 +7,7 @@ namespace BasqueteVirtual.Models
 {
     public partial class MargemDeVitoria7Opco
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string Horario { get; set; }
         public string NomeTime { get; set; }
         public string De1Ate2 { get; set; }

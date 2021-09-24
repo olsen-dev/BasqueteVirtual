@@ -7,7 +7,7 @@ namespace BasqueteVirtual.Models
 {
     public partial class ResultadoDuplo
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string Horario { get; set; }
         public string Confronto1 { get; set; }
         public string Confronto1Odd { get; set; }

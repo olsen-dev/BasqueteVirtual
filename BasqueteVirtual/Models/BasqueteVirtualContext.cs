@@ -20,6 +20,7 @@ namespace BasqueteVirtual.Models
         public virtual DbSet<ApostasNoJogo> ApostasNoJogos { get; set; }
         public virtual DbSet<HandicapDePontosAlternativo> HandicapDePontosAlternativos { get; set; }
         public virtual DbSet<HandicapEtotai> HandicapEtotais { get; set; }
+        public virtual DbSet<JogoTotalImparPar> JogoTotalImparPars { get; set; }
         public virtual DbSet<JogoTotalMaisAlternativa> JogoTotalMaisAlternativas { get; set; }
         public virtual DbSet<MargemDeVitoria5Opco> MargemDeVitoria5Opcoes { get; set; }
         public virtual DbSet<MargemDeVitoria5OpcoesEtotalDePonto> MargemDeVitoria5OpcoesEtotalDePontos { get; set; }
@@ -48,8 +49,6 @@ namespace BasqueteVirtual.Models
 
             modelBuilder.Entity<ApostasNoJogo>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("ApostasNoJogo");
 
                 entity.Property(e => e.Handicap)
@@ -79,8 +78,6 @@ namespace BasqueteVirtual.Models
 
             modelBuilder.Entity<HandicapDePontosAlternativo>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.Property(e => e.Horario)
                     .HasMaxLength(10)
                     .IsUnicode(false);
@@ -100,8 +97,6 @@ namespace BasqueteVirtual.Models
 
             modelBuilder.Entity<HandicapEtotai>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("HandicapETotais");
 
                 entity.Property(e => e.Horario)
@@ -121,10 +116,25 @@ namespace BasqueteVirtual.Models
                     .IsUnicode(false);
             });
 
+            modelBuilder.Entity<JogoTotalImparPar>(entity =>
+            {
+                entity.ToTable("JogoTotalImparPar");
+
+                entity.Property(e => e.Horario)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Impar)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Par)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+            });
+
             modelBuilder.Entity<JogoTotalMaisAlternativa>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.Property(e => e.Horario)
                     .HasMaxLength(10)
                     .IsUnicode(false);
@@ -144,8 +154,6 @@ namespace BasqueteVirtual.Models
 
             modelBuilder.Entity<MargemDeVitoria5Opco>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.Property(e => e.De11Ate15)
                     .HasMaxLength(50)
                     .IsUnicode(false);
@@ -177,8 +185,6 @@ namespace BasqueteVirtual.Models
 
             modelBuilder.Entity<MargemDeVitoria5OpcoesEtotalDePonto>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("MargemDeVitoria5OpcoesETotalDePontos");
 
                 entity.Property(e => e.Horario)
@@ -200,8 +206,6 @@ namespace BasqueteVirtual.Models
 
             modelBuilder.Entity<MargemDeVitoria7Opco>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.Property(e => e.De10Ate13)
                     .HasMaxLength(50)
                     .IsUnicode(false);
@@ -241,8 +245,6 @@ namespace BasqueteVirtual.Models
 
             modelBuilder.Entity<MargemDeVitoria7OpcoesEtotalDePonto>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("MargemDeVitoria7OpcoesETotalDePontos");
 
                 entity.Property(e => e.Horario)
@@ -264,8 +266,6 @@ namespace BasqueteVirtual.Models
 
             modelBuilder.Entity<QuartoMaisProdutivo>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("QuartoMaisProdutivo");
 
                 entity.Property(e => e.Horario)
@@ -291,8 +291,6 @@ namespace BasqueteVirtual.Models
 
             modelBuilder.Entity<ResultadoDuplo>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("ResultadoDuplo");
 
                 entity.Property(e => e.Confronto1)
@@ -356,8 +354,6 @@ namespace BasqueteVirtual.Models
 
             modelBuilder.Entity<ResultadoEtotal>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("ResultadoETotal");
 
                 entity.Property(e => e.Horario)
@@ -379,8 +375,6 @@ namespace BasqueteVirtual.Models
 
             modelBuilder.Entity<Tempo1ParaGanhar3Opco>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.Property(e => e.Empate)
                     .HasMaxLength(30)
                     .IsUnicode(false);
@@ -404,8 +398,6 @@ namespace BasqueteVirtual.Models
 
             modelBuilder.Entity<TimeTotai>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.Property(e => e.Horario)
                     .HasMaxLength(10)
                     .IsUnicode(false);
@@ -429,8 +421,6 @@ namespace BasqueteVirtual.Models
 
             modelBuilder.Entity<TotaldoJogoIntervalos10Ponto>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.Property(e => e.De180Ate189)
                     .HasMaxLength(50)
                     .IsUnicode(false);
@@ -478,8 +468,6 @@ namespace BasqueteVirtual.Models
 
             modelBuilder.Entity<TotaldoJogoIntervalos5Ponto>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.Property(e => e.De180Ate184)
                     .HasMaxLength(50)
                     .IsUnicode(false);

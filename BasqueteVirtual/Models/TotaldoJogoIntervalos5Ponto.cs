@@ -7,7 +7,7 @@ namespace BasqueteVirtual.Models
 {
     public partial class TotaldoJogoIntervalos5Ponto
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string Horario { get; set; }
         public string MenosDe180 { get; set; }
         public string De180Ate184 { get; set; }
