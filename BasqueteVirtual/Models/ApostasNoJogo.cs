@@ -14,5 +14,6 @@ namespace BasqueteVirtual.Models
         public string Total { get; set; }
         public string ParaGanhar { get; set; }
         public string Odds { get; set; }
+        public DateTime? InsertData { get; set; }
     }
 }

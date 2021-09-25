@@ -13,5 +13,6 @@ namespace BasqueteVirtual.Models
         public string MaisDe { get; set; }
         public string MenosDe { get; set; }
         public string Odds { get; set; }
+        public DateTime? InsertData { get; set; }
     }
 }

@@ -13,5 +13,6 @@ namespace BasqueteVirtual.Models
         public string Quarto2 { get; set; }
         public string Quarto3 { get; set; }
         public string Quarto4 { get; set; }
+        public DateTime? InsertData { get; set; }
     }
 }

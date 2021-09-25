@@ -21,5 +21,6 @@ namespace BasqueteVirtual.Models
         public string Confronto5Odd { get; set; }
         public string Confronto6 { get; set; }
         public string Confronto6Odd { get; set; }
+        public DateTime? InsertData { get; set; }
     }
 }

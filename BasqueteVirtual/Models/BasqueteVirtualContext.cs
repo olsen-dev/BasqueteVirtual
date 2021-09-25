@@ -59,6 +59,8 @@ namespace BasqueteVirtual.Models
                     .HasMaxLength(10)
                     .IsUnicode(false);
 
+                entity.Property(e => e.InsertData).HasColumnType("datetime");
+
                 entity.Property(e => e.NomeTime)
                     .HasMaxLength(100)
                     .IsUnicode(false);
@@ -82,16 +84,14 @@ namespace BasqueteVirtual.Models
                     .HasMaxLength(10)
                     .IsUnicode(false);
 
+                entity.Property(e => e.InsertData).HasColumnType("datetime");
+
                 entity.Property(e => e.Nome)
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Odds)
                     .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Total)
-                    .HasMaxLength(10)
                     .IsUnicode(false);
             });
 
@@ -102,6 +102,8 @@ namespace BasqueteVirtual.Models
                 entity.Property(e => e.Horario)
                     .HasMaxLength(10)
                     .IsUnicode(false);
+
+                entity.Property(e => e.InsertData).HasColumnType("datetime");
 
                 entity.Property(e => e.Odds)
                     .HasMaxLength(50)
@@ -128,6 +130,8 @@ namespace BasqueteVirtual.Models
                     .HasMaxLength(10)
                     .IsUnicode(false);
 
+                entity.Property(e => e.InsertData).HasColumnType("datetime");
+
                 entity.Property(e => e.Par)
                     .HasMaxLength(10)
                     .IsUnicode(false);
@@ -139,12 +143,14 @@ namespace BasqueteVirtual.Models
                     .HasMaxLength(10)
                     .IsUnicode(false);
 
+                entity.Property(e => e.InsertData).HasColumnType("datetime");
+
                 entity.Property(e => e.MaisDe)
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.MenosDe)
-                    .HasMaxLength(10)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Odds)
@@ -174,6 +180,8 @@ namespace BasqueteVirtual.Models
                     .HasMaxLength(10)
                     .IsUnicode(false);
 
+                entity.Property(e => e.InsertData).HasColumnType("datetime");
+
                 entity.Property(e => e.MaisDe21)
                     .HasMaxLength(50)
                     .IsUnicode(false);
@@ -190,6 +198,8 @@ namespace BasqueteVirtual.Models
                 entity.Property(e => e.Horario)
                     .HasMaxLength(10)
                     .IsUnicode(false);
+
+                entity.Property(e => e.InsertData).HasColumnType("datetime");
 
                 entity.Property(e => e.NomeTime)
                     .HasMaxLength(50)
@@ -234,6 +244,8 @@ namespace BasqueteVirtual.Models
                     .HasMaxLength(10)
                     .IsUnicode(false);
 
+                entity.Property(e => e.InsertData).HasColumnType("datetime");
+
                 entity.Property(e => e.MaisDe21)
                     .HasMaxLength(50)
                     .IsUnicode(false);
@@ -250,6 +262,8 @@ namespace BasqueteVirtual.Models
                 entity.Property(e => e.Horario)
                     .HasMaxLength(10)
                     .IsUnicode(false);
+
+                entity.Property(e => e.InsertData).HasColumnType("datetime");
 
                 entity.Property(e => e.NomeTime)
                     .HasMaxLength(50)
@@ -271,6 +285,8 @@ namespace BasqueteVirtual.Models
                 entity.Property(e => e.Horario)
                     .HasMaxLength(10)
                     .IsUnicode(false);
+
+                entity.Property(e => e.InsertData).HasColumnType("datetime");
 
                 entity.Property(e => e.Quarto1)
                     .HasMaxLength(50)
@@ -350,6 +366,8 @@ namespace BasqueteVirtual.Models
                 entity.Property(e => e.Horario)
                     .HasMaxLength(10)
                     .IsUnicode(false);
+
+                entity.Property(e => e.InsertData).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<ResultadoEtotal>(entity =>
@@ -359,6 +377,8 @@ namespace BasqueteVirtual.Models
                 entity.Property(e => e.Horario)
                     .HasMaxLength(10)
                     .IsUnicode(false);
+
+                entity.Property(e => e.InsertData).HasColumnType("datetime");
 
                 entity.Property(e => e.Odds)
                     .HasMaxLength(50)
@@ -383,6 +403,8 @@ namespace BasqueteVirtual.Models
                     .HasMaxLength(10)
                     .IsUnicode(false);
 
+                entity.Property(e => e.InsertData).HasColumnType("datetime");
+
                 entity.Property(e => e.NomeTime1)
                     .HasMaxLength(30)
                     .IsUnicode(false);
@@ -401,6 +423,8 @@ namespace BasqueteVirtual.Models
                 entity.Property(e => e.Horario)
                     .HasMaxLength(10)
                     .IsUnicode(false);
+
+                entity.Property(e => e.InsertData).HasColumnType("datetime");
 
                 entity.Property(e => e.MaisDe)
                     .HasMaxLength(100)
@@ -456,6 +480,8 @@ namespace BasqueteVirtual.Models
                 entity.Property(e => e.Horario)
                     .HasMaxLength(10)
                     .IsUnicode(false);
+
+                entity.Property(e => e.InsertData).HasColumnType("datetime");
 
                 entity.Property(e => e.MaisDe259)
                     .HasMaxLength(50)
@@ -527,6 +553,8 @@ namespace BasqueteVirtual.Models
                 entity.Property(e => e.Horario)
                     .HasMaxLength(10)
                     .IsUnicode(false);
+
+                entity.Property(e => e.InsertData).HasColumnType("datetime");
 
                 entity.Property(e => e.MaisDe249)
                     .HasMaxLength(50)

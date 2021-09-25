@@ -25,5 +25,6 @@ namespace BasqueteVirtual.Models
         public string De240Ate244 { get; set; }
         public string De245Ate249 { get; set; }
         public string MaisDe249 { get; set; }
+        public DateTime? InsertData { get; set; }
     }
 }

@@ -11,5 +11,6 @@ namespace BasqueteVirtual.Models
         public string Horario { get; set; }
         public string Impar { get; set; }
         public string Par { get; set; }
+        public DateTime? InsertData { get; set; }
     }
 }

@@ -13,5 +13,6 @@ namespace BasqueteVirtual.Models
         public string NomeTime2 { get; set; }
         public string Odds { get; set; }
         public string Empate { get; set; }
+        public DateTime? InsertData { get; set; }
     }
 }

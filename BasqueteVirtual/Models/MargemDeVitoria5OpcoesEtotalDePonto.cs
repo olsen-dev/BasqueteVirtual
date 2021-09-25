@@ -12,5 +12,6 @@ namespace BasqueteVirtual.Models
         public string NomeTime { get; set; }
         public string Valor { get; set; }
         public string Odd { get; set; }
+        public DateTime? InsertData { get; set; }
     }
 }

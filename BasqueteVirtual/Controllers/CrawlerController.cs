@@ -23,13 +23,61 @@ namespace BasqueteVirtual.Controllers
         }
 
         // GET: CrawlerController/Create
-        public ActionResult Create(ApostasNoJogo apostasNoJogo)
+        public ActionResult Create_ApostasNoJogo(ApostasNoJogo apostasNoJogo)
         {
 
             BasqueteVirtualContext basqueteVirtualContext = new BasqueteVirtualContext();
-            apostasNoJogo.Id = basqueteVirtualContext.ApostasNoJogos.Count();
+            //apostasNoJogo.Id = basqueteVirtualContext.ApostasNoJogos.Count();
+            apostasNoJogo.InsertData = DateTime.Now;
             basqueteVirtualContext.ApostasNoJogos.Add(apostasNoJogo);
-            basqueteVirtualContext.SaveChangesAsync();
+            basqueteVirtualContext.SaveChanges();
+            return View();
+        }
+
+        public ActionResult Create_JogoTotalMaisAlternativa(JogoTotalMaisAlternativa jogoTotalMaisAlternativa)
+        {
+            BasqueteVirtualContext basqueteVirtualContext = new BasqueteVirtualContext();
+            //jogoTotalMaisAlternativa.Id = basqueteVirtualContext.JogoTotalMaisAlternativas.Count();
+            jogoTotalMaisAlternativa.InsertData = DateTime.Now;
+            basqueteVirtualContext.JogoTotalMaisAlternativas.Add(jogoTotalMaisAlternativa);
+            basqueteVirtualContext.SaveChanges();
+            return View();
+        }
+        public ActionResult Create_HandicapDePontosAlternativo(HandicapDePontosAlternativo handicapDePontosAlternativo)
+        {
+            BasqueteVirtualContext basqueteVirtualContext = new BasqueteVirtualContext();
+            //handicapDePontosAlternativo.Id = basqueteVirtualContext.HandicapDePontosAlternativos.Count();
+            handicapDePontosAlternativo.InsertData = DateTime.Now;
+            basqueteVirtualContext.HandicapDePontosAlternativos.Add(handicapDePontosAlternativo);
+            basqueteVirtualContext.SaveChanges();
+            return View();
+        }
+
+        public ActionResult Create_ResultadoEtotal(ResultadoEtotal resultadoEtotal)
+        {
+            BasqueteVirtualContext basqueteVirtualContext = new BasqueteVirtualContext();
+            //handicapDePontosAlternativo.Id = basqueteVirtualContext.HandicapDePontosAlternativos.Count();
+            resultadoEtotal.InsertData = DateTime.Now;
+            basqueteVirtualContext.ResultadoEtotals.Add(resultadoEtotal);
+            basqueteVirtualContext.SaveChanges();
+            return View();
+        }
+        public ActionResult Create_HandicapEtotai(HandicapEtotai handicapEtotai)
+        {
+            BasqueteVirtualContext basqueteVirtualContext = new BasqueteVirtualContext();
+            //handicapDePontosAlternativo.Id = basqueteVirtualContext.HandicapDePontosAlternativos.Count();
+            handicapEtotai.InsertData = DateTime.Now;
+            basqueteVirtualContext.HandicapEtotais.Add(handicapEtotai);
+            basqueteVirtualContext.SaveChanges();
+            return View();
+        }
+        public ActionResult Create_TimeTotai(TimeTotai timeTotai)
+        {
+            BasqueteVirtualContext basqueteVirtualContext = new BasqueteVirtualContext();
+            //handicapDePontosAlternativo.Id = basqueteVirtualContext.HandicapDePontosAlternativos.Count();
+            timeTotai.InsertData = DateTime.Now;
+            basqueteVirtualContext.TimeTotais.Add(timeTotai);
+            basqueteVirtualContext.SaveChanges();
             return View();
         }
 
