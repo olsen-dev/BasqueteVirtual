@@ -80,6 +80,54 @@ namespace BasqueteVirtual.Controllers
             basqueteVirtualContext.SaveChanges();
             return View();
         }
+        public ActionResult Create_TotaldoJogoIntervalos5Ponto(TotaldoJogoIntervalos5Ponto totaldoJogoIntervalos5Ponto)
+        {
+            BasqueteVirtualContext basqueteVirtualContext = new BasqueteVirtualContext();
+            //handicapDePontosAlternativo.Id = basqueteVirtualContext.HandicapDePontosAlternativos.Count();
+            totaldoJogoIntervalos5Ponto.InsertData = DateTime.Now;
+            basqueteVirtualContext.TotaldoJogoIntervalos5Pontos.Add(totaldoJogoIntervalos5Ponto);
+            basqueteVirtualContext.SaveChanges();
+            return View();
+        }
+        public ActionResult Create_TotaldoJogoIntervalos10Ponto(TotaldoJogoIntervalos10Ponto totaldoJogoIntervalos10Ponto)
+        {
+            BasqueteVirtualContext basqueteVirtualContext = new BasqueteVirtualContext();
+            //handicapDePontosAlternativo.Id = basqueteVirtualContext.HandicapDePontosAlternativos.Count();
+            totaldoJogoIntervalos10Ponto.InsertData = DateTime.Now;
+            basqueteVirtualContext.TotaldoJogoIntervalos10Pontos.Add(totaldoJogoIntervalos10Ponto);
+            basqueteVirtualContext.SaveChanges();
+            return View();
+        }
+
+        public ActionResult Create_MargemDeVitoria5Opcoes(MargemDeVitoria5Opco margemDeVitoria5Opcoes)
+        {
+            BasqueteVirtualContext basqueteVirtualContext = new BasqueteVirtualContext();
+            //handicapDePontosAlternativo.Id = basqueteVirtualContext.HandicapDePontosAlternativos.Count();
+            margemDeVitoria5Opcoes.InsertData = DateTime.Now;
+            basqueteVirtualContext.MargemDeVitoria5Opcoes.Add(margemDeVitoria5Opcoes);
+            basqueteVirtualContext.SaveChanges();
+            return View();
+        }
+
+        public ActionResult Create_MargemDeVitoria7Opcoes(MargemDeVitoria7Opco margemDeVitoria7Opcoes)
+        {
+            BasqueteVirtualContext basqueteVirtualContext = new BasqueteVirtualContext();
+            //handicapDePontosAlternativo.Id = basqueteVirtualContext.HandicapDePontosAlternativos.Count();
+            margemDeVitoria7Opcoes.InsertData = DateTime.Now;
+            basqueteVirtualContext.MargemDeVitoria7Opcoes.Add(margemDeVitoria7Opcoes);
+            basqueteVirtualContext.SaveChanges();
+            return View();
+        }
+
+        public ActionResult Create_MargemDeVitoria5OpcoesEtotalDePontos(MargemDeVitoria5OpcoesEtotalDePonto margemDeVitoria5OpcoesEtotalDePontos)
+        {
+            BasqueteVirtualContext basqueteVirtualContext = new BasqueteVirtualContext();
+            //handicapDePontosAlternativo.Id = basqueteVirtualContext.HandicapDePontosAlternativos.Count();
+            margemDeVitoria5OpcoesEtotalDePontos.InsertData = DateTime.Now;
+            basqueteVirtualContext.MargemDeVitoria5OpcoesEtotalDePontos.Add(margemDeVitoria5OpcoesEtotalDePontos);
+            basqueteVirtualContext.SaveChanges();
+            return View();
+        }
 
         // POST: CrawlerController/Create
         [HttpPost]

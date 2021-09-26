@@ -201,17 +201,27 @@ namespace BasqueteVirtual.Models
 
                 entity.Property(e => e.InsertData).HasColumnType("datetime");
 
+                entity.Property(e => e.MaisDe)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.MenosDe)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.NomeTime)
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Odd)
+                entity.Property(e => e.OddMaisDe)
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("Odd_MaisDe");
 
-                entity.Property(e => e.Valor)
+                entity.Property(e => e.OddMenosDe)
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("Odd_MenosDe");
             });
 
             modelBuilder.Entity<MargemDeVitoria7Opco>(entity =>
@@ -265,17 +275,27 @@ namespace BasqueteVirtual.Models
 
                 entity.Property(e => e.InsertData).HasColumnType("datetime");
 
+                entity.Property(e => e.MaisDe)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.MenosDe)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.NomeTime)
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Odd)
+                entity.Property(e => e.OddMaisDe)
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("Odd_MaisDe");
 
-                entity.Property(e => e.Valor)
+                entity.Property(e => e.OddMenosDe)
                     .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .HasColumnName("Odd_MenosDe");
             });
 
             modelBuilder.Entity<QuartoMaisProdutivo>(entity =>

@@ -37,6 +37,7 @@ namespace BasqueteVirtual
                     }
                     for (var x = 0; x < horarios.Count; x++)
                     {
+                        ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0 , 0)");
                         CrawlerController crawlerController = new CrawlerController();
                         driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"))[x].Click();
                         Thread.Sleep(500);
@@ -60,6 +61,8 @@ namespace BasqueteVirtual
                             if (driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedMarketRow_Odds"))[3].Text != "")
                             {
                                 crawlerController.Create_ApostasNoJogo(apostasNoJogo_2);
+                            } else{
+                                continue;
                             }
                             if (driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedMarketRow_Odds"))[0].Text != "")
                             {
@@ -174,14 +177,14 @@ namespace BasqueteVirtual
                         {
                             TimeTotai timeTotai_1 = new TimeTotai();
                             timeTotai_1.Horario = driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"))[x].Text;
-                            timeTotai_1.NomeTime = driver.FindElements(By.ClassName("gl-MarketColumnHeader"))[0].Text;
+                            timeTotai_1.NomeTime = driver.FindElements(By.ClassName("gl-MarketColumnHeader"))[1].Text;
                             timeTotai_1.MaisDe = driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedWithMarketBorders_Handicap"))[0].Text;
                             timeTotai_1.MenosDe = driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedWithMarketBorders_Handicap"))[1].Text;
                             timeTotai_1.Odds = driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedWithMarketBorders_Odds"))[0].Text + "-" + driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedWithMarketBorders_Odds"))[1].Text;
 
                             TimeTotai timeTotai_2 = new TimeTotai();
                             timeTotai_2.Horario = driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"))[x].Text;
-                            timeTotai_2.NomeTime = driver.FindElements(By.ClassName("gl-MarketColumnHeader"))[1].Text;
+                            timeTotai_2.NomeTime = driver.FindElements(By.ClassName("gl-MarketColumnHeader"))[2].Text;
                             timeTotai_2.MaisDe = driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedWithMarketBorders_Handicap"))[2].Text;
                             timeTotai_2.MenosDe = driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedWithMarketBorders_Handicap"))[3].Text;
                             timeTotai_2.Odds = driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedWithMarketBorders_Odds"))[2].Text + "-" + driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedWithMarketBorders_Odds"))[3].Text;
@@ -199,6 +202,172 @@ namespace BasqueteVirtual
                         catch (Exception ex)
                         {
 
+                        }
+
+                        try
+                        {
+                            TotaldoJogoIntervalos5Ponto totaldoJogoIntervalos5Pontos = new TotaldoJogoIntervalos5Ponto();
+                            totaldoJogoIntervalos5Pontos.Horario = driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"))[x].Text;
+                            totaldoJogoIntervalos5Pontos.MenosDe180 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[0].Text;
+                            totaldoJogoIntervalos5Pontos.De180Ate184 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[1].Text;
+                            totaldoJogoIntervalos5Pontos.De185Ate189 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[2].Text;
+                            totaldoJogoIntervalos5Pontos.De190Ate194 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[3].Text;
+                            totaldoJogoIntervalos5Pontos.De195Ate199 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[4].Text;
+                            totaldoJogoIntervalos5Pontos.De200Ate204 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[5].Text;
+                            totaldoJogoIntervalos5Pontos.De205Ate209 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[6].Text;
+                            totaldoJogoIntervalos5Pontos.De210Ate214 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[7].Text;
+                            totaldoJogoIntervalos5Pontos.De215Ate219 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[8].Text;
+                            totaldoJogoIntervalos5Pontos.De220Ate224 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[9].Text;
+                            totaldoJogoIntervalos5Pontos.De225Ate229 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[10].Text;
+                            totaldoJogoIntervalos5Pontos.De230Ate234 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[11].Text;
+                            totaldoJogoIntervalos5Pontos.De235Ate239 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[12].Text;
+                            totaldoJogoIntervalos5Pontos.De240Ate244 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[13].Text;
+                            totaldoJogoIntervalos5Pontos.De245Ate249 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[14].Text;
+                            totaldoJogoIntervalos5Pontos.MaisDe249 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[15].Text;
+
+
+                            if (totaldoJogoIntervalos5Pontos.MenosDe180 != "")
+                            {
+                                crawlerController.Create_TotaldoJogoIntervalos5Ponto(totaldoJogoIntervalos5Pontos);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+
+                        try
+                        {
+                            TotaldoJogoIntervalos10Ponto totaldoJogoIntervalos10Pontos = new TotaldoJogoIntervalos10Ponto();
+                            totaldoJogoIntervalos10Pontos.Horario = driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"))[x].Text;
+                            totaldoJogoIntervalos10Pontos.MenosDe180 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[16].Text;
+                            totaldoJogoIntervalos10Pontos.De180Ate189 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[17].Text;
+                            totaldoJogoIntervalos10Pontos.De190Ate199 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[18].Text;
+                            totaldoJogoIntervalos10Pontos.De200Ate209 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[19].Text;
+                            totaldoJogoIntervalos10Pontos.De210Ate219 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[20].Text;
+                            totaldoJogoIntervalos10Pontos.De220Ate229 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[21].Text;
+                            totaldoJogoIntervalos10Pontos.De230Ate239= driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[22].Text;
+                            totaldoJogoIntervalos10Pontos.De240Ate249 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[23].Text;
+                            totaldoJogoIntervalos10Pontos.De250Ate259 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[24].Text;
+                            totaldoJogoIntervalos10Pontos.MaisDe259 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[25].Text;
+
+
+
+                            if (totaldoJogoIntervalos10Pontos.MenosDe180 != "")
+                            {
+                                crawlerController.Create_TotaldoJogoIntervalos10Ponto(totaldoJogoIntervalos10Pontos);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                        try
+                        {
+                            MargemDeVitoria5Opco margemDeVitoria5Opco_1 = new MargemDeVitoria5Opco();
+                            margemDeVitoria5Opco_1.Horario = driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"))[x].Text;
+                            margemDeVitoria5Opco_1.NomeTime = driver.FindElements(By.ClassName("gl-MarketColumnHeader"))[6].Text;
+                            margemDeVitoria5Opco_1.De1Ate5 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[26].Text;
+                            margemDeVitoria5Opco_1.De6Ate10 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[27].Text;
+                            margemDeVitoria5Opco_1.De11Ate15= driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[28].Text;
+                            margemDeVitoria5Opco_1.De16Ate20= driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[29].Text;
+                            margemDeVitoria5Opco_1.MaisDe21= driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[30].Text;
+
+                            MargemDeVitoria5Opco margemDeVitoria5Opco_2 = new MargemDeVitoria5Opco();
+                            margemDeVitoria5Opco_2.Horario = driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"))[x].Text;
+                            margemDeVitoria5Opco_2.NomeTime = driver.FindElements(By.ClassName("gl-MarketColumnHeader"))[7].Text;
+                            margemDeVitoria5Opco_2.De1Ate5 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[31].Text;
+                            margemDeVitoria5Opco_2.De6Ate10 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[32].Text;
+                            margemDeVitoria5Opco_2.De11Ate15 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[33].Text;
+                            margemDeVitoria5Opco_2.De16Ate20 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[34].Text;
+                            margemDeVitoria5Opco_2.MaisDe21 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[35].Text;
+
+
+
+                            if (margemDeVitoria5Opco_1.De11Ate15 != "")
+                            {
+                                crawlerController.Create_MargemDeVitoria5Opcoes(margemDeVitoria5Opco_1);
+                            }
+                            if (margemDeVitoria5Opco_2.De11Ate15 != "")
+                            {
+                                crawlerController.Create_MargemDeVitoria5Opcoes(margemDeVitoria5Opco_2);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+
+                        try
+                        {
+                            MargemDeVitoria7Opco margemDeVitoria7Opco_1 = new MargemDeVitoria7Opco();
+                            margemDeVitoria7Opco_1.Horario = driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"))[x].Text;
+                            margemDeVitoria7Opco_1.NomeTime = driver.FindElements(By.ClassName("gl-MarketColumnHeader"))[9].Text;
+                            margemDeVitoria7Opco_1.De1Ate2 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[36].Text;
+                            margemDeVitoria7Opco_1.De3Ate6 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[37].Text;
+                            margemDeVitoria7Opco_1.De7Ate9 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[38].Text;
+                            margemDeVitoria7Opco_1.De10Ate13= driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[39].Text;
+                            margemDeVitoria7Opco_1.De14Ate16 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[40].Text;
+                            margemDeVitoria7Opco_1.De17Ate20 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[41].Text;
+                            margemDeVitoria7Opco_1.MaisDe21 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[42].Text;
+
+                            MargemDeVitoria7Opco margemDeVitoria7Opco_2 = new MargemDeVitoria7Opco();
+                            margemDeVitoria7Opco_2.Horario = driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"))[x].Text;
+                            margemDeVitoria7Opco_2.NomeTime = driver.FindElements(By.ClassName("gl-MarketColumnHeader"))[10].Text;
+                            margemDeVitoria7Opco_2.De1Ate2 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[43].Text;
+                            margemDeVitoria7Opco_2.De3Ate6 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[44].Text;
+                            margemDeVitoria7Opco_2.De7Ate9 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[45].Text;
+                            margemDeVitoria7Opco_2.De10Ate13 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[46].Text;
+                            margemDeVitoria7Opco_2.De14Ate16 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[47].Text;
+                            margemDeVitoria7Opco_2.De17Ate20 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[48].Text;
+                            margemDeVitoria7Opco_2.MaisDe21 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[49].Text;
+
+
+
+                            if (margemDeVitoria7Opco_1.De10Ate13!= "")
+                            {
+                                crawlerController.Create_MargemDeVitoria7Opcoes(margemDeVitoria7Opco_1);
+                            }
+                            if (margemDeVitoria7Opco_2.De14Ate16 != "")
+                            {
+                                crawlerController.Create_MargemDeVitoria7Opcoes(margemDeVitoria7Opco_2);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+
+                        try
+                        {
+                            
+                            driver.FindElements(By.ClassName("vr-CastsDropDown"))[0].Click();
+                            driver.FindElements(By.ClassName("vr-CastsDropDownItem"))[0].Click();
+                            var count_options_nome = driver.FindElements(By.ClassName("vr-CastsDropDownItem")).Count; 
+                            for(var y = 0; y < count_options_nome; y++)
+                            {
+                                MargemDeVitoria5OpcoesEtotalDePonto margemDeVitoria5OpcoesEtotalDePonto = new MargemDeVitoria5OpcoesEtotalDePonto();
+                                margemDeVitoria5OpcoesEtotalDePonto.Horario = driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"))[x].Text;
+                                margemDeVitoria5OpcoesEtotalDePonto.NomeTime = driver.FindElements(By.ClassName("vr-CastsDropDownButton_Participant"))[0].Text;
+
+                                driver.FindElements(By.ClassName("vr-CastsDropDownButton"))[1].Click();
+                                margemDeVitoria5OpcoesEtotalDePonto.MaisDe = driver.FindElements(By.ClassName("vr-CastsDropDownItem"))[0].Text;
+                                driver.FindElements(By.ClassName("vr-CastsDropDownItem"))[0].Click();
+                                margemDeVitoria5OpcoesEtotalDePonto.OddMaisDe = driver.FindElements(By.ClassName("vr-CastsParticipant_Odds"))[0].Text;
+
+                                driver.FindElements(By.ClassName("vr-CastsDropDownButton"))[1].Click();
+                                margemDeVitoria5OpcoesEtotalDePonto.MenosDe = driver.FindElements(By.ClassName("vr-CastsDropDownItem"))[1].Text;
+                                driver.FindElements(By.ClassName("vr-CastsDropDownItem"))[1].Click();
+                                margemDeVitoria5OpcoesEtotalDePonto.OddMenosDe = driver.FindElements(By.ClassName("vr-CastsParticipant_Odds"))[0].Text;
+
+                                crawlerController.Create_MargemDeVitoria5OpcoesEtotalDePontos(margemDeVitoria5OpcoesEtotalDePonto);
+                                driver.FindElements(By.ClassName("vr-CastsDropDown"))[0].Click();
+                                driver.FindElements(By.ClassName("vr-CastsDropDownItem"))[y + 1].Click();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            driver.FindElements(By.ClassName("vr-CastsDropDownItem"))[0].Click();
                         }
                     }
                     Thread.Sleep(5000);

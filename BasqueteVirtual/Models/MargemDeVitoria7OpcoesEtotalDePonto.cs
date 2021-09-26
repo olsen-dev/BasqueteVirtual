@@ -10,8 +10,10 @@ namespace BasqueteVirtual.Models
         public int Id { get; set; }
         public string Horario { get; set; }
         public string NomeTime { get; set; }
-        public string Valor { get; set; }
-        public string Odd { get; set; }
+        public string MaisDe { get; set; }
+        public string MenosDe { get; set; }
+        public string OddMaisDe { get; set; }
+        public string OddMenosDe { get; set; }
         public DateTime? InsertData { get; set; }
     }
 }
