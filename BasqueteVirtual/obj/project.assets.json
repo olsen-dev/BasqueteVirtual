@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "DotRas.for.Win8/1.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/DotRas.dll": {}
+        },
+        "runtime": {
+          "lib/net40/DotRas.dll": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -2626,10 +2635,38 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "VPNConnector/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "DotRas.for.Win8": "1.3.0"
+        },
+        "compile": {
+          "lib/net452/VPNConnector.dll": {}
+        },
+        "runtime": {
+          "lib/net452/VPNConnector.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "DotRas.for.Win8/1.3.0": {
+      "sha512": "vetxGKzzinebFwexUOamgwA9fws5X86CM0Ta/jcTeWuOEBPNMjXsWDoE6e0EImLgnz3EAvUhM594duzxrkgBeg==",
+      "type": "package",
+      "path": "dotras.for.win8/1.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "docs/DotRas.chm",
+        "dotras.for.win8.1.3.0.nupkg.sha512",
+        "dotras.for.win8.nuspec",
+        "lib/net20/DotRas.dll",
+        "lib/net20/DotRas.xml",
+        "lib/net40/DotRas.dll",
+        "lib/net40/DotRas.xml"
+      ]
+    },
     "Humanizer.Core/2.8.26": {
       "sha512": "OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
       "type": "package",
@@ -8639,17 +8676,31 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "VPNConnector/1.0.0": {
+      "sha512": "JI8OnCYcrkZ4tB9YTfTBDizCky40A+Xoti+/t/IDuYG9wXyI1/TfkEDA7v17ptybsNKSvtLyyT+HTWW/Bco80Q==",
+      "type": "package",
+      "path": "vpnconnector/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net452/VPNConnector.dll",
+        "vpnconnector.1.0.0.nupkg.sha512",
+        "vpnconnector.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "DotRas.for.Win8 >= 1.3.0",
       "Microsoft.EntityFrameworkCore >= 5.0.10",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.10",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.10",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.18",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.5",
       "Selenium.Chrome.WebDriver >= 85.0.0",
-      "Selenium.WebDriver >= 3.141.0"
+      "Selenium.WebDriver >= 3.141.0",
+      "VPNConnector >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -8699,6 +8750,10 @@
       "netcoreapp3.1": {
         "targetAlias": "netcoreapp3.1",
         "dependencies": {
+          "DotRas.for.Win8": {
+            "target": "Package",
+            "version": "[1.3.0, )"
+          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.10, )"
@@ -8730,6 +8785,10 @@
           "Selenium.WebDriver": {
             "target": "Package",
             "version": "[3.141.0, )"
+          },
+          "VPNConnector": {
+            "target": "Package",
+            "version": "[1.0.0, )"
           }
         },
         "imports": [
@@ -8753,5 +8812,27 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'DotRas.for.Win8 1.3.0' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "DotRas.for.Win8",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'VPNConnector 1.0.0' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "VPNConnector",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

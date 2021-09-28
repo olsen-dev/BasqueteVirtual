@@ -46,6 +46,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "DotRas.for.Win8": {
+              "target": "Package",
+              "version": "[1.3.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.10, )"
@@ -77,6 +81,10 @@
             "Selenium.WebDriver": {
               "target": "Package",
               "version": "[3.141.0, )"
+            },
+            "VPNConnector": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             }
           },
           "imports": [

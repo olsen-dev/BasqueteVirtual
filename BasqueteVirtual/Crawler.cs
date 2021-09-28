@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using BasqueteVirtual.Controllers;
 using BasqueteVirtual.Models;
+using DotRas;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -14,18 +16,19 @@ namespace BasqueteVirtual
 {
     public class Crawler
     {
-        public  void BasqueteCrawler()
+        public void BasqueteCrawler()
         {
 
-
-            IWebDriver driver = new ChromeDriver(@"c:\chromedriver"); 
+            IWebDriver driver = new ChromeDriver(@"c:\chromedriver");
             driver.Navigate().GoToUrl("https://www.bet365.com/#/AVR/B2026/R^1/");
 
             var horarios = driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"));
             while (true)
             {
-                try {      
+                try
+                {
                     var loop = true;
+                    var number = 0;
                     while (loop)
                     {
                         horarios = driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"));
@@ -34,6 +37,21 @@ namespace BasqueteVirtual
                             if (horarios[0].Text != null)
                                 loop = false;
                         }
+                        else
+                        {
+                            if (number == 5)
+                            {
+                                driver.Navigate().GoToUrl("https://www.bet365.com/#/AVR/B2026/?V=" + number);
+                                horarios = driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"));
+                                break;
+                                
+                            }
+                            else
+                            {
+                                number++;
+                            }
+                            //Thread.Sleep(500);
+                        }
                     }
                     for (var x = 0; x < horarios.Count; x++)
                     {
@@ -41,7 +59,8 @@ namespace BasqueteVirtual
                         CrawlerController crawlerController = new CrawlerController();
                         driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"))[x].Click();
                         Thread.Sleep(500);
-                        try {
+                        try
+                        {
                             ApostasNoJogo apostasNoJogo_1 = new ApostasNoJogo();
                             apostasNoJogo_1.Horario = driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"))[x].Text;
                             apostasNoJogo_1.NomeTime = driver.FindElements(By.ClassName("gl-MarketColumnHeader"))[1].Text;
@@ -49,7 +68,7 @@ namespace BasqueteVirtual
                             apostasNoJogo_1.Total = driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedMarketRow_Handicap"))[1].Text;
                             apostasNoJogo_1.ParaGanhar = driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedMarketRow_Odds"))[2].Text;
                             apostasNoJogo_1.Odds = driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedMarketRow_Odds"))[0].Text + "-" + driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedMarketRow_Odds"))[1].Text;
-                            
+
                             ApostasNoJogo apostasNoJogo_2 = new ApostasNoJogo();
                             apostasNoJogo_2.Horario = driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"))[x].Text;
                             apostasNoJogo_2.NomeTime = driver.FindElements(By.ClassName("gl-MarketColumnHeader"))[2].Text;
@@ -57,20 +76,23 @@ namespace BasqueteVirtual
                             apostasNoJogo_2.Total = driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedMarketRow_Handicap"))[3].Text;
                             apostasNoJogo_2.ParaGanhar = driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedMarketRow_Odds"))[5].Text;
                             apostasNoJogo_2.Odds = driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedMarketRow_Odds"))[3].Text + "-" + driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedMarketRow_Odds"))[4].Text;
-                            
+
                             if (driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedMarketRow_Odds"))[3].Text != "")
                             {
                                 crawlerController.Create_ApostasNoJogo(apostasNoJogo_2);
-                            } else{
+                            }
+                            else
+                            {
                                 continue;
                             }
                             if (driver.FindElements(By.ClassName("srb-ParticipantCenteredStackedMarketRow_Odds"))[0].Text != "")
                             {
                                 crawlerController.Create_ApostasNoJogo(apostasNoJogo_1);
                             }
-                        } catch(Exception ex) 
+                        }
+                        catch (Exception ex)
                         {
-                        
+
                         }
 
                         try
@@ -80,14 +102,15 @@ namespace BasqueteVirtual
                             jogoTotalMaisAlternativa.MaisDe = driver.FindElements(By.ClassName("srb-ParticipantStackedBorderless_Name"))[0].Text;
                             jogoTotalMaisAlternativa.MenosDe = driver.FindElements(By.ClassName("srb-ParticipantStackedBorderless_Name"))[1].Text;
                             jogoTotalMaisAlternativa.Odds = driver.FindElements(By.ClassName("srb-ParticipantStackedBorderless_Odds"))[0].Text + "-" + driver.FindElements(By.ClassName("srb-ParticipantStackedBorderless_Odds"))[1].Text;
-                            if(driver.FindElements(By.ClassName("srb-ParticipantStackedBorderless_Odds"))[0].Text != "")
+                            if (driver.FindElements(By.ClassName("srb-ParticipantStackedBorderless_Odds"))[0].Text != "")
                             {
                                 crawlerController.Create_JogoTotalMaisAlternativa(jogoTotalMaisAlternativa);
                             }
 
-                        } catch(Exception ex) 
+                        }
+                        catch (Exception ex)
                         {
-                        
+
                         }
 
 
@@ -103,7 +126,7 @@ namespace BasqueteVirtual
                             handicapDePontosAlternativo_2.Nome = driver.FindElements(By.ClassName("gl-ParticipantBorderless_Name"))[1].Text;
                             handicapDePontosAlternativo_2.Odds = driver.FindElements(By.ClassName("gl-ParticipantBorderless_Odds"))[1].Text;
 
-                            if(handicapDePontosAlternativo_1.Odds != "")
+                            if (handicapDePontosAlternativo_1.Odds != "")
                             {
                                 crawlerController.Create_HandicapDePontosAlternativo(handicapDePontosAlternativo_1);
                             }
@@ -113,8 +136,9 @@ namespace BasqueteVirtual
                             }
 
                         }
-                        catch (Exception ex) { 
-                        
+                        catch (Exception ex)
+                        {
+
                         }
 
                         try
@@ -131,11 +155,11 @@ namespace BasqueteVirtual
                             resultadoEtotal_2.TimeMenosDe = driver.FindElements(By.ClassName("gl-ParticipantBorderless_Name"))[3].Text;
                             resultadoEtotal_2.Odds = driver.FindElements(By.ClassName("gl-ParticipantBorderless_Odds"))[2].Text + "-" + driver.FindElements(By.ClassName("gl-ParticipantBorderless_Odds"))[3].Text;
 
-                            if(resultadoEtotal_1.Odds != "-")
+                            if (resultadoEtotal_1.Odds != "-")
                             {
                                 crawlerController.Create_ResultadoEtotal(resultadoEtotal_1);
                             }
-                            if(resultadoEtotal_2.Odds != "-")
+                            if (resultadoEtotal_2.Odds != "-")
                             {
                                 crawlerController.Create_ResultadoEtotal(resultadoEtotal_2);
                             }
@@ -246,7 +270,7 @@ namespace BasqueteVirtual
                             totaldoJogoIntervalos10Pontos.De200Ate209 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[19].Text;
                             totaldoJogoIntervalos10Pontos.De210Ate219 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[20].Text;
                             totaldoJogoIntervalos10Pontos.De220Ate229 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[21].Text;
-                            totaldoJogoIntervalos10Pontos.De230Ate239= driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[22].Text;
+                            totaldoJogoIntervalos10Pontos.De230Ate239 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[22].Text;
                             totaldoJogoIntervalos10Pontos.De240Ate249 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[23].Text;
                             totaldoJogoIntervalos10Pontos.De250Ate259 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[24].Text;
                             totaldoJogoIntervalos10Pontos.MaisDe259 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[25].Text;
@@ -269,9 +293,9 @@ namespace BasqueteVirtual
                             margemDeVitoria5Opco_1.NomeTime = driver.FindElements(By.ClassName("gl-MarketColumnHeader"))[6].Text;
                             margemDeVitoria5Opco_1.De1Ate5 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[26].Text;
                             margemDeVitoria5Opco_1.De6Ate10 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[27].Text;
-                            margemDeVitoria5Opco_1.De11Ate15= driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[28].Text;
-                            margemDeVitoria5Opco_1.De16Ate20= driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[29].Text;
-                            margemDeVitoria5Opco_1.MaisDe21= driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[30].Text;
+                            margemDeVitoria5Opco_1.De11Ate15 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[28].Text;
+                            margemDeVitoria5Opco_1.De16Ate20 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[29].Text;
+                            margemDeVitoria5Opco_1.MaisDe21 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[30].Text;
 
                             MargemDeVitoria5Opco margemDeVitoria5Opco_2 = new MargemDeVitoria5Opco();
                             margemDeVitoria5Opco_2.Horario = driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"))[x].Text;
@@ -306,7 +330,7 @@ namespace BasqueteVirtual
                             margemDeVitoria7Opco_1.De1Ate2 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[36].Text;
                             margemDeVitoria7Opco_1.De3Ate6 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[37].Text;
                             margemDeVitoria7Opco_1.De7Ate9 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[38].Text;
-                            margemDeVitoria7Opco_1.De10Ate13= driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[39].Text;
+                            margemDeVitoria7Opco_1.De10Ate13 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[39].Text;
                             margemDeVitoria7Opco_1.De14Ate16 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[40].Text;
                             margemDeVitoria7Opco_1.De17Ate20 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[41].Text;
                             margemDeVitoria7Opco_1.MaisDe21 = driver.FindElements(By.ClassName("gl-ParticipantOddsOnly_Odds"))[42].Text;
@@ -324,7 +348,7 @@ namespace BasqueteVirtual
 
 
 
-                            if (margemDeVitoria7Opco_1.De10Ate13!= "")
+                            if (margemDeVitoria7Opco_1.De10Ate13 != "")
                             {
                                 crawlerController.Create_MargemDeVitoria7Opcoes(margemDeVitoria7Opco_1);
                             }
@@ -340,11 +364,11 @@ namespace BasqueteVirtual
 
                         try
                         {
-                            
+
                             driver.FindElements(By.ClassName("vr-CastsDropDown"))[0].Click();
                             driver.FindElements(By.ClassName("vr-CastsDropDownItem"))[0].Click();
-                            var count_options_nome = driver.FindElements(By.ClassName("vr-CastsDropDownItem")).Count; 
-                            for(var y = 0; y < count_options_nome; y++)
+                            var count_options_nome = driver.FindElements(By.ClassName("vr-CastsDropDownItem")).Count;
+                            for (var y = 0; y < count_options_nome; y++)
                             {
                                 MargemDeVitoria5OpcoesEtotalDePonto margemDeVitoria5OpcoesEtotalDePonto = new MargemDeVitoria5OpcoesEtotalDePonto();
                                 margemDeVitoria5OpcoesEtotalDePonto.Horario = driver.FindElements(By.ClassName("vr-EventTimesNavBarButton"))[x].Text;
@@ -370,14 +394,14 @@ namespace BasqueteVirtual
                             driver.FindElements(By.ClassName("vr-CastsDropDownItem"))[0].Click();
                         }
                     }
-                    Thread.Sleep(5000);
+                    Thread.Sleep(120000);
                 }
                 catch (Exception ex)
                 {
 
                 }
             }
-            
+
 
         }
 

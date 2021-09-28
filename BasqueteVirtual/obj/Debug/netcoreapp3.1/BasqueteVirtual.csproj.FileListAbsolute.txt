@@ -136,8 +136,6 @@ D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\obj\Debug\netcoreapp3.1\sco
 D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\obj\Debug\netcoreapp3.1\BasqueteVirtual.TagHelpers.input.cache
 D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\obj\Debug\netcoreapp3.1\BasqueteVirtual.TagHelpers.output.cache
 D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\obj\Debug\netcoreapp3.1\BasqueteVirtual.RazorCoreGenerate.cache
-D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -150,4 +148,8 @@ D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\obj\Debug\netcoreapp3.1\Bas
 D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\obj\Debug\netcoreapp3.1\BasqueteVirtual.dll
 D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\obj\Debug\netcoreapp3.1\BasqueteVirtual.pdb
 D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\obj\Debug\netcoreapp3.1\BasqueteVirtual.genruntimeconfig.cache
+D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\obj\Debug\netcoreapp3.1\BasqueteVirtual.csproj.AssemblyReference.cache
+D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\bin\Debug\netcoreapp3.1\DotRas.dll
+D:\OlsenDev\Projetos\BasqueteVirtual\BasqueteVirtual\bin\Debug\netcoreapp3.1\VPNConnector.dll
